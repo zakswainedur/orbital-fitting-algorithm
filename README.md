@@ -26,6 +26,7 @@ This project implements an **orbital fitting algorithm** to determine the orbit 
 ### Observed vs. Fitted Orbit
 
 ![Observed vs Fitted Orbit](screenshots/2D_fit_plot.png)
+
 *Figure 1: Comparison of Observed Positions with Fitted Orbit Projection*
 
 ### 3D Orbit Visualization
