@@ -26,12 +26,12 @@ This project implements an **orbital fitting algorithm** to determine the orbit 
 
 ### Observed vs. Fitted Orbit
 
-![Observed vs Fitted Orbit](screenshots/observed_vs_fitted_orbit.png)
+![Observed vs Fitted Orbit](screenshots/2D_fit_plot.png)
 *Figure 1: Comparison of Observed Positions with Fitted Orbit Projection*
 
 ### 3D Orbit Visualization
 
-![3D Orbit Visualization](screenshots/3d_orbit_visualization.png)
+![3D Orbit Visualization](screenshots/3D_fit_plot.png)
 *Figure 2: 3D Visualization of the Moon's Orbit around Neptune*
 
 ## Technologies Used
