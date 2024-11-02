@@ -22,11 +22,11 @@ def plot_observed_vs_fitted(x_obs, y_obs, sigma_x, sigma_y,
     """
     plt.figure(figsize=(8, 6))
     plt.errorbar(x_obs, y_obs, xerr=sigma_x, yerr=sigma_y,
-                 fmt='o', label='Observed positions with errors', capsize=2)
+                 fmt='o',markersize=0, label='Observed positions', capsize=2)
     
-    plt.plot(x_proj_act, y_proj_act, label='Orbit projection with literature parameters')
+    plt.plot(x_proj_act, y_proj_act,c='black',linestyle='dotted', label='literature Projection')
     
-    plt.plot(x_proj_fit, y_proj_fit, label='Fitted orbit projection')
+    plt.plot(x_proj_fit, y_proj_fit,c='r',linestyle='dashed', label='Fitted orbit projection')
     plt.axis('equal')
     plt.xlabel('X (meters)')
     plt.ylabel('Y (meters)')
@@ -47,15 +47,15 @@ def plot_3d_orbit(x_orbit, y_orbit, z_orbit, x_obs, y_obs):
     """
     fig = plt.figure(figsize=(10, 8))
     ax = fig.add_subplot(111, projection='3d')
-    ax.plot(x_orbit, y_orbit, z_orbit, label='Fitted Orbit', color='blue')
-    ax.scatter(0, 0, 0, color='orange', label='Planet', s=100)
+    ax.plot(x_orbit, y_orbit, z_orbit, label='Fitted Orbit', color='grey', linestyle='dashdot')
+    ax.scatter(0, 0, 0, color='lightseagreen', label='Planet', s=100)
     # Plot observed positions at z=0
     ax.scatter(x_obs, y_obs, np.zeros_like(x_obs), color='red', label='Observed Positions')
     # Optional: Plot projection lines
     for xi, yi, zi in zip(x_orbit, y_orbit, z_orbit):
-        ax.plot([xi, xi], [yi, yi], [zi, 0], color='gray', linestyle='--', linewidth=0.5)
+        ax.plot([xi, xi], [yi, yi], [zi, 0], color='gray', linestyle='--', linewidth=0.5,alpha=0.5)
     # Also, plot the projected orbit onto the XY plane
-    ax.plot(x_orbit, y_orbit, zs=0, label='Projected Orbit', color='green', linestyle='--')
+    ax.plot(x_orbit, y_orbit, zs=0, label='Projected Orbit', color='r', linestyle='--')
     ax.set_xlabel('X (meters)')
     ax.set_ylabel('Y (meters)')
     ax.set_zlabel('Z (meters)')
@@ -106,20 +106,12 @@ def plot_chi_squared_surface(I_grid_deg, Omega_grid_deg, delta_chi_sq, chi_squar
     # Labeling
     plt.xlabel(r'Inclination $i$ (degrees)')
     plt.ylabel(r'Longitude of Ascending Node $\Omega$ (degrees)')
-    plt.title('Chi-squared Surface for $i$ and $\Omega$')
-    
-    # Confidence levels for two parameters (chi-squared distribution)
-    levels = [2.30, 6.17, 11.8]
-    CS = plt.contour(
-        I_grid_deg, 
-        Omega_grid_deg, 
-        delta_chi_sq, 
-        levels=levels, 
-        colors=['black', 'black', 'black']
-    )
+    plt.title('Chi-squared Surface for $i$ and $\\Omega$')
+
     
     plt.grid(True, alpha=0.2)
-    plt.xticks(np.arange(180, 361, 30), np.arange(0, 181, 30))
+    plt.xticks(np.around(np.arange(I_grid_deg.min(), I_grid_deg.max(),6),decimals=1), 
+               np.around(np.arange(I_grid_deg.min()-180, I_grid_deg.max()-180,6),decimals=1))
     
     plt.show()
 

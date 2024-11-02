@@ -145,7 +145,7 @@ def main():
 
     # Define ranges for i and Omega
     delta_angle = np.radians(10)  # +/- 10 degrees around the best-fit
-    i_values = np.linspace(i_fit - delta_angle, i_fit + delta_angle, 100)
+    i_values = np.linspace(i_fit + np.radians(180) - delta_angle, i_fit +  np.radians(180) + delta_angle, 100)
     Omega_values = np.linspace(Omega_fit - delta_angle, Omega_fit + delta_angle, 100)
 
     # Create meshgrid
