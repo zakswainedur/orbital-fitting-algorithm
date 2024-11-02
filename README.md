@@ -17,6 +17,7 @@ This project implements an **orbital fitting algorithm** to determine the orbit 
 ## Features
 
 - **Data Processing:** Reads and processes observational data from CSV files.
+- **Orbital Projection:** Uses a set of rotations to project the orbit onto the observational frame.
 - **Orbital Parameter Estimation:** Utilizes least squares optimization to fit orbital parameters.
 - **Visualization:** Generates 2D and 3D plots to visualize observed data and fitted orbits.
 - **Uncertainty Analysis:** Provides estimates of uncertainties in the fitted parameters.
@@ -27,12 +28,12 @@ This project implements an **orbital fitting algorithm** to determine the orbit 
 
 ![Observed vs Fitted Orbit](screenshots/2D_fit_plot.png)
 
-*Figure 1: Comparison of Observed Positions with Fitted Orbit Projection*
+*Figure 1: Comparison of Observed Positions with Fitted Orbit Projection. The slight offset is likely due to (and the magnitude of) observational errors.*
 
 ### 3D Orbit Visualization
 
 ![3D Orbit Visualization](screenshots/3D_fit_plot.png)
-*Figure 2: 3D Visualization of the Moon's Orbit around Neptune*
+*Figure 2: 3D Visualization of the Moon's Orbit around Neptune.*
 
 ## Technologies Used
 
@@ -45,6 +46,7 @@ This project implements an **orbital fitting algorithm** to determine the orbit 
   - Least Squares Optimization
   - Solving Kepler's Equation
   - Data Visualization
+  - Rotation Matrices
 
 ## Code Highlights
 
@@ -73,3 +75,25 @@ def solve_kepler(M, e, tol=1e-12, max_iter=200):
         if np.max(np.abs(delta_E)) < tol:
             break
     return E
+ ```
+*Figure 3: Implementation of the Newton-Raphson method to solve Kepler's Equation for the Eccentric Anomaly.*
+
+## Project Structure
+
+- **📁 data/**: Contains the example `observations.csv` file with raw observational data used for orbital calculations.
+  
+- **📁 src/**: Source code files.
+  - **📄 __init__.py**: Marks the directory as a Python package.
+  - **📄 constants.py**: Defines required constants.
+  - **📄 data_processing.py**: Handles reading and preprocessing of the data.
+  - **📄 main.py**
+  - **📄 orbital_fitting.py**: Fits orbit using least squares optimization.
+  - **📄 plotting.py**: Defines each plotting method.
+  - **📄 utils.py**: Provides utility functions (e.g. rotations, projections).
+  
+- **📁 screenshots/**: Stores images of the project's visual outputs, including plots and diagrams.
+  
+
+## License
+
+This project is licensed under the [MIT License](LICENSE).
