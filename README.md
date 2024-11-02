@@ -2,7 +2,6 @@
 
 ![License](https://img.shields.io/badge/License-MIT-blue.svg)
 ![Python](https://img.shields.io/badge/Python-3.8%2B-blue.svg)
-![GitHub last commit](https://img.shields.io/github/last-commit/your-username/orbital-fitting-algorithm)
 
 This project implements an **orbital fitting algorithm** to determine the orbit of a moon around Neptune using observational data. Leveraging Python libraries such as **NumPy**, **SciPy**, and **Matplotlib**, the algorithm processes data, fits orbital parameters, and visualizes the results in both 2D and 3D.
 
